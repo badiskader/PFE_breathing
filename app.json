@@ -1,0 +1,37 @@
+{
+  "expo": {
+    "name": "AirPulse",
+    "slug": "airpulse",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "bundleIdentifier": "com.airpulse.app",
+      "supportsTablet": true
+    },
+    "android": {
+      "package": "com.airpulse.app",
+      "adaptiveIcon": {
+        "backgroundColor": "#E6F4FE",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-localization",
+      "expo-secure-store"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "82b58ba4-78a2-47d6-a369-93c2dfaa4e8d"
+      }
+    },
+    "owner": "kader_29"
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "app": {
+    "name": "AirPulse"
+  },
+  "common": {
+    "continue": "Continuer",
+    "disabled": "Desactive",
+    "enabled": "Active",
+    "perEndpoint": "Par endpoint"
+  },
+  "actions": {
+    "chatSessions": "Sessions chat",
+    "continue": "Continuer",
+    "createAccount": "Creer un compte",
+    "editProfile": "Modifier le profil",
+    "enterDemo": "Entrer dans la demo",
+    "language": "Langue",
+    "login": "Connexion",
+    "notificationSettings": "Reglages notifications",
+    "notifications": "Notifications",
+    "register": "Inscription",
+    "settings": "Reglages",
+    "stationDetails": "Details station"
+  },
+  "routes": {
+    "chatSessions": "Sessions chat",
+    "editProfile": "Modifier le profil",
+    "languageSettings": "Langue",
+    "notificationSettings": "Reglages notifications",
+    "notifications": "Notifications",
+    "settings": "Reglages",
+    "stationDetails": "Details station"
+  },
+  "startup": {
+    "api": "URL de base API",
+    "language": "Langue",
+    "mockMode": "Mode mock",
+    "ready": "Fondation frontend prete",
+    "subtitle": "Compagnon qualite de l'air"
+  },
+  "tabs": {
+    "analytics": "Analytics",
+    "chat": "Chat",
+    "map": "Carte",
+    "myAir": "My Air",
+    "profile": "Profil"
+  },
+  "placeholders": {
+    "navigationOnly": "Step 2 navigation",
+    "analytics": {
+      "body": "L'onglet analytics est route et pret pour les donnees mockees."
+    },
+    "chat": {
+      "body": "L'onglet chat est route et pret pour l'interface multi-agent."
+    },
+    "chatSessions": {
+      "body": "La navigation des historiques de chat est reservee ici."
+    },
+    "editProfile": {
+      "body": "La modification du profil se connectera plus tard a l'endpoint onboarding."
+    },
+    "languageSettings": {
+      "body": "Les preferences de langue seront gerees ici avec i18n."
+    },
+    "login": {
+      "body": "La connexion JWT sera branchee ici quand le backend auth sera pret.",
+      "title": "Connexion"
+    },
+    "map": {
+      "body": "L'onglet carte est route et pret pour react-native-maps."
+    },
+    "myAir": {
+      "body": "Le tableau de bord est route et pret pour l'AQI, la prevision et la recommandation."
+    },
+    "notificationSettings": {
+      "body": "Les preferences de notification sont routees ici et restent mockees pour le moment."
+    },
+    "notifications": {
+      "body": "Le centre de notifications est pret pour le flux d'alertes mocke."
+    },
+    "onboarding": {
+      "body": "Le profil sante collectera ici les donnees de personnalisation.",
+      "title": "Profil sante"
+    },
+    "profile": {
+      "body": "L'onglet profil est route et pret pour les sections sante, lifestyle et reglages."
+    },
+    "register": {
+      "body": "La creation de compte sera branchee ici quand le backend auth sera pret.",
+      "title": "Inscription"
+    },
+    "settings": {
+      "body": "Les routes de reglages sont regroupees ici pour langue, theme et notifications."
+    },
+    "stationDetails": {
+      "body": "La route detail station a recu le capteur {{sensorId}}."
+    },
+    "welcome": {
+      "body": "Le stack auth est pret; l'auth mockee sera branchee plus tard.",
+      "title": "Bienvenue"
+    }
+  }
+}

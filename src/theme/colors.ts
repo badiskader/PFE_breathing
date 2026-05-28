@@ -1,0 +1,33 @@
+export const colors = {
+  primaryBlue: '#2F80ED',
+  secondaryCyan: '#12BBD4',
+  goodGreen: '#9BE35A',
+  moderateYellow: '#FFD84D',
+  unhealthyOrange: '#FF985A',
+  dangerousRed: '#EF4444',
+  purpleAccent: '#7C5CFF',
+  hazardousMaroon: '#7F1D1D',
+  background: '#F7F9FC',
+  card: '#FFFFFF',
+  white: '#FFFFFF',
+  textPrimary: '#172033',
+  textSecondary: '#6B7280',
+  textMuted: '#9CA3AF',
+  border: '#E5E7EB',
+  mutedSurface: '#EEF2F7',
+  blueSurface: '#EAF3FF',
+  greenSurface: '#EAF9E1',
+  yellowSurface: '#FFF7D6',
+  orangeSurface: '#FFF0E7',
+  redSurface: '#FEE2E2',
+  errorSurface: '#FFF1F2',
+} as const;
+
+export const aqiColors = {
+  Good: colors.goodGreen,
+  Moderate: colors.moderateYellow,
+  'Unhealthy for Sensitive Groups': colors.unhealthyOrange,
+  Unhealthy: colors.dangerousRed,
+  'Very Unhealthy': colors.purpleAccent,
+  Hazardous: colors.hazardousMaroon,
+} as const;

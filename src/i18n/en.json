@@ -1,0 +1,103 @@
+{
+  "app": {
+    "name": "AirPulse"
+  },
+  "common": {
+    "continue": "Continue",
+    "disabled": "Disabled",
+    "enabled": "Enabled",
+    "perEndpoint": "Per endpoint"
+  },
+  "actions": {
+    "chatSessions": "Chat sessions",
+    "continue": "Continue",
+    "createAccount": "Create account",
+    "editProfile": "Edit profile",
+    "enterDemo": "Enter demo",
+    "language": "Language",
+    "login": "Log in",
+    "notificationSettings": "Notification settings",
+    "notifications": "Notifications",
+    "register": "Register",
+    "settings": "Settings",
+    "stationDetails": "Station details"
+  },
+  "routes": {
+    "chatSessions": "Chat sessions",
+    "editProfile": "Edit profile",
+    "languageSettings": "Language",
+    "notificationSettings": "Notification settings",
+    "notifications": "Notifications",
+    "settings": "Settings",
+    "stationDetails": "Station details"
+  },
+  "startup": {
+    "api": "API base URL",
+    "language": "Language",
+    "mockMode": "Mock mode",
+    "ready": "Frontend foundation ready",
+    "subtitle": "Air quality companion"
+  },
+  "tabs": {
+    "analytics": "Analytics",
+    "chat": "Chat",
+    "map": "Map",
+    "myAir": "My Air",
+    "profile": "Profile"
+  },
+  "placeholders": {
+    "navigationOnly": "Step 2 navigation shell",
+    "analytics": {
+      "body": "The analytics tab is routed and ready for mocked chart data in a later step."
+    },
+    "chat": {
+      "body": "The chat tab is routed and ready for the multi-agent advisor UI."
+    },
+    "chatSessions": {
+      "body": "Chat history navigation is reserved here for session browsing."
+    },
+    "editProfile": {
+      "body": "Profile editing will connect to the onboarding upsert endpoint later."
+    },
+    "languageSettings": {
+      "body": "Language preferences will live here while i18n remains app-wide."
+    },
+    "login": {
+      "body": "JWT login will connect here when backend auth ships.",
+      "title": "Log in"
+    },
+    "map": {
+      "body": "The map tab is routed and ready for react-native-maps integration."
+    },
+    "myAir": {
+      "body": "The dashboard tab is routed and ready for live AQI, forecast, and recommendation data."
+    },
+    "notificationSettings": {
+      "body": "Notification preferences are routed here and stay mocked for now."
+    },
+    "notifications": {
+      "body": "The notification center route is ready for the mocked alert flow."
+    },
+    "onboarding": {
+      "body": "The health profile flow will collect personalization inputs here.",
+      "title": "Health profile"
+    },
+    "profile": {
+      "body": "The profile tab is routed and ready for health, lifestyle, and settings sections."
+    },
+    "register": {
+      "body": "Account creation will connect here when backend auth ships.",
+      "title": "Register"
+    },
+    "settings": {
+      "body": "App settings routes are grouped here for language, theme, and notifications."
+    },
+    "stationDetails": {
+      "body": "Station detail route received sensor {{sensorId}}."
+    },
+    "welcome": {
+      "body": "The auth stack is ready; mock auth will be wired in a later step.",
+      "title": "Welcome"
+    }
+  }
+}
