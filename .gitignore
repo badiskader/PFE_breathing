@@ -8,7 +8,7 @@ Thumbs.db
 .env.*
 !.env.example
 
-# Frontend
+# Frontend (Expo / React Native)
 frontend/node_modules/
 frontend/.expo/
 frontend/dist/
@@ -33,13 +33,18 @@ frontend/*.apk
 frontend/*.aab
 frontend/.claude/
 
-# Backend (common)
-backend/node_modules/
+# Backend (Python)
 backend/.venv/
 backend/venv/
 backend/__pycache__/
 backend/*.pyc
-backend/dist/
-backend/build/
 backend/.env
 backend/.env.*
+backend/.pytest_cache/
+backend/.mypy_cache/
+backend/.ruff_cache/
+backend/dist/
+backend/build/
+backend/.coverage
+backend/.coverage.*
+backend/htmlcov/

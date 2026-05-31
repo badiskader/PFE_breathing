@@ -1,0 +1,161 @@
+
+services:
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.6.1
+    container_name: zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    healthcheck:
+      test: ["CMD", "bash", "-c", "cub zk-ready localhost:2181 30"]
+      interval: 10s
+      timeout: 35s
+      retries: 5
+      start_period: 30s
+
+  kafka:
+    image: confluentinc/cp-kafka:7.6.1
+    container_name: kafka
+    depends_on:
+      zookeeper:
+        condition: service_healthy
+    ports:
+      - "9092:9092"     # in-Docker clients (containers): kafka:9092
+      - "29092:29092"   # host clients (your laptop):     localhost:29092
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:29092
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092,PLAINTEXT_HOST://0.0.0.0:29092
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+    healthcheck:
+      test: ["CMD-SHELL", "kafka-topics --bootstrap-server localhost:9092 --list >/dev/null 2>&1"]
+      interval: 15s
+      timeout: 10s
+      retries: 10
+
+  mongo:
+    image: mongo:7.0
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping').ok"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.api
+    container_name: api
+    depends_on:
+      mongo:
+        condition: service_healthy
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    volumes:
+      - ../:/app
+      - ../data:/app/data
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health').read()"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    restart: unless-stopped
+
+  producer:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.api
+    container_name: producer
+    depends_on:
+      kafka:
+        condition: service_healthy
+    env_file:
+      - .env
+    volumes:
+      - ../:/app
+      - ../data:/app/data
+    command: ["python", "-m", "streaming.producer"]
+    restart: unless-stopped
+
+  raw_writer:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.api
+    container_name: raw_writer
+    depends_on:
+      kafka:
+        condition: service_healthy
+      mongo:
+        condition: service_healthy
+    env_file:
+      - .env
+    volumes:
+      - ../:/app
+    command: ["python", "-m", "consumers.raw_writer_consumer"]
+    restart: unless-stopped
+
+  aqi_consumer:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.api
+    container_name: aqi_consumer
+    depends_on:
+      kafka:
+        condition: service_healthy
+      mongo:
+        condition: service_healthy
+    env_file:
+      - .env
+    volumes:
+      - ../:/app
+    command: ["python", "-m", "consumers.aqi_consumer"]
+    restart: unless-stopped
+
+  recommendation_scheduler:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.api
+    container_name: recommendation_scheduler
+    depends_on:
+      mongo:
+        condition: service_healthy
+    env_file:
+      - .env
+    volumes:
+      - ../:/app
+    command: ["python", "-m", "schedulers.recommendation_scheduler"]
+    restart: unless-stopped
+
+  lakehouse_writer:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.api
+    container_name: lakehouse_writer
+    depends_on:
+      kafka:
+        condition: service_healthy
+    env_file:
+      - .env
+    volumes:
+      - ../:/app
+      - ../data:/app/data
+    command: ["python", "-m", "consumers.lakehouse_writer"]
+    restart: unless-stopped
+
+volumes:
+  mongo_data:

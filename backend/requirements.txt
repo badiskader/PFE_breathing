@@ -1,0 +1,43 @@
+# ----- Web framework -----
+fastapi==0.115.6
+uvicorn[standard]==0.32.1
+
+# ----- Config & validation -----
+pydantic==2.10.4
+pydantic-settings==2.7.0
+
+# ----- Async MongoDB -----
+motor==3.6.0
+pymongo==4.9.2
+
+# ----- Kafka -----
+aiokafka==0.12.0
+
+# ----- HTTP client (Mamba API, Groq) -----
+httpx==0.28.1
+
+# ----- Scheduling -----
+apscheduler==3.11.0
+
+# ----- Data / lakehouse -----
+pandas==2.2.3
+pyarrow==18.1.0
+duckdb==1.1.3
+
+# ----- LLM / RAG (used in later steps) -----
+groq==0.13.1
+sentence-transformers==3.3.1
+agno>=1.0.0
+# PDF → text extraction for the KB ingestion script.
+pypdf>=4.0.0
+
+# ----- Auth -----
+python-jose[cryptography]==3.3.0
+# NOTE: services/auth_service.py talks to `bcrypt` directly (passlib's
+# version-detection breaks with bcrypt>=4.1). passlib is kept as a
+# transitive include but is not imported by our code.
+bcrypt>=4.0,<5.0
+passlib[bcrypt]==1.7.4
+
+# ----- Utilities -----
+python-dotenv==1.0.1
