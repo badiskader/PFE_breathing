@@ -1,0 +1,45 @@
+# Global
+.DS_Store
+Thumbs.db
+*.log
+
+# Local env files
+.env
+.env.*
+!.env.example
+
+# Frontend
+frontend/node_modules/
+frontend/.expo/
+frontend/dist/
+frontend/web-build/
+frontend/expo-env.d.ts
+frontend/.kotlin/
+frontend/*.orig.*
+frontend/*.jks
+frontend/*.p8
+frontend/*.p12
+frontend/*.key
+frontend/*.mobileprovision
+frontend/.metro-health-check*
+frontend/npm-debug.*
+frontend/yarn-debug.*
+frontend/yarn-error.*
+frontend/*.pem
+frontend/*.tsbuildinfo
+frontend/ios/
+frontend/android/
+frontend/*.apk
+frontend/*.aab
+frontend/.claude/
+
+# Backend (common)
+backend/node_modules/
+backend/.venv/
+backend/venv/
+backend/__pycache__/
+backend/*.pyc
+backend/dist/
+backend/build/
+backend/.env
+backend/.env.*
